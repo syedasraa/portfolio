@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syeda Asra Anjum — Product Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFEF9;
+    --sand: #F0EAE0;
+    --sand-mid: #E2D8CB;
+    --terracotta: #C17A5C;
+    --terracotta-light: #F2E4DA;
+    --terracotta-dark: #8C4E30;
+    --forest: #3D5A47;
+    --forest-light: #EAF0EC;
+    --forest-mid: #6A8C76;
+    --ink: #1E1A17;
+    --ink-mid: #4A443E;
+    --ink-light: #8A837A;
+    --gold: #C49A3C;
+    --gold-light: #F5EDD8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand-mid);
+    padding: 0 48px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400;
+    color: var(--ink-mid);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 120px; padding-bottom: 80px;
+    position: relative;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    border: 1px solid var(--terracotta);
+    padding: 5px 12px; border-radius: 2px;
+    margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+  }
+  .hero-name {
+    font-family: 'Lora', serif;
+    font-size: clamp(44px, 7vw, 88px);
+    font-weight: 600; line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+  }
+  .hero-name em { color: var(--terracotta); font-style: italic; }
+  .hero-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px; font-weight: 300;
+    color: var(--ink-mid);
+    margin-bottom: 32px;
+    opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-bio {
+    font-size: 16px; color: var(--ink-mid);
+    max-width: 560px; line-height: 1.75;
+    margin-bottom: 44px;
+    opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px;
+    opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
+  }
+  .pill {
+    font-size: 12px; font-weight: 400;
+    padding: 6px 14px; border-radius: 100px;
+    background: var(--sand); color: var(--ink-mid);
+    border: 1px solid var(--sand-mid);
+  }
+  .pill.accent { background: var(--terracotta-light); color: var(--terracotta-dark); border-color: var(--terracotta); }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.75s forwards;
+  }
+  .btn-primary {
+    padding: 13px 28px; border-radius: 3px;
+    background: var(--terracotta); color: #fff;
+    font-size: 14px; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+  .btn-outline {
+    padding: 13px 28px; border-radius: 3px;
+    background: transparent; color: var(--ink-mid);
+    font-size: 14px; font-weight: 400;
+    text-decoration: none;
+    border: 1px solid var(--sand-mid);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--ink-mid); color: var(--ink); }
+
+  .hero-decoration {
+    position: absolute; right: -20px; top: 140px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: var(--terracotta-light);
+    opacity: 0.5; z-index: -1;
+    animation: fadeIn 1.2s 0.3s forwards;
+    opacity: 0;
+  }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 64px;
+    padding-top: 40px; border-top: 1px solid var(--sand-mid);
+    opacity: 0; animation: fadeUp 0.7s 0.9s forwards;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: 'Lora', serif;
+    font-size: 28px; font-weight: 600;
+    color: var(--ink);
+  }
+  .stat-label { font-size: 12px; color: var(--ink-light); letter-spacing: 0.04em; }
+
+  /* ── SECTION HEADERS ── */
+  .section-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    color: var(--terracotta); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 600; line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--ink-mid);
+    max-width: 520px; line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--warm-white); max-width: 100%; padding: 100px 0; }
+  .about-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 48px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .about-text p { font-size: 16px; color: var(--ink-mid); line-height: 1.8; margin-bottom: 20px; }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+  .about-grid { display: flex; flex-direction: column; gap: 20px; }
+  .about-card {
+    background: var(--cream);
+    border: 1px solid var(--sand-mid);
+    border-radius: 6px; padding: 20px 24px;
+  }
+  .about-card-title {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 10px;
+  }
+  .about-card-body { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .about-card-body span {
+    display: inline-block;
+    background: var(--sand); color: var(--ink-mid);
+    padding: 3px 10px; border-radius: 100px;
+    font-size: 12px; margin: 2px 2px 2px 0;
+  }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  #experience { border-top: 1px solid var(--sand-mid); }
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 1px; background: var(--sand-mid);
+  }
+  .timeline-item { position: relative; margin-bottom: 44px; }
+  .timeline-dot {
+    position: absolute; left: -34px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--terracotta); border: 2px solid var(--cream);
+  }
+  .timeline-date {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--ink-light); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .timeline-role {
+    font-family: 'Lora', serif;
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .timeline-company {
+    font-size: 14px; color: var(--terracotta); margin-bottom: 10px;
+  }
+  .timeline-desc {
+    font-size: 14px; color: var(--ink-mid); line-height: 1.7;
+  }
+  .timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 2px;
+    background: var(--forest-light); color: var(--forest);
+    border: 1px solid #C8DDD0; font-weight: 400;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { border-top: 1px solid var(--sand-mid); }
+  .projects-grid { display: flex; flex-direction: column; gap: 48px; }
+
+  .project-card {
+    background: var(--warm-white);
+    border: 1px solid var(--sand-mid);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 12px 40px rgba(30,26,23,0.08); transform: translateY(-2px); }
+
+  .project-header {
+    padding: 36px 40px 0;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px;
+  }
+  .project-number {
+    font-family: 'Lora', serif;
+    font-size: 48px; font-weight: 600; line-height: 1;
+    color: var(--sand-mid); letter-spacing: -0.03em;
+    flex-shrink: 0;
+  }
+  .project-meta { flex: 1; }
+  .project-type {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+  .project-title {
+    font-family: 'Lora', serif;
+    font-size: 26px; font-weight: 600; color: var(--ink);
+    line-height: 1.2; margin-bottom: 8px;
+  }
+  .project-tagline {
+    font-size: 14px; color: var(--ink-mid); font-style: italic;
+  }
+
+  .project-body { padding: 28px 40px 36px; }
+
+  .project-section-title {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-light);
+    margin-bottom: 10px; margin-top: 24px;
+  }
+  .project-section-title:first-child { margin-top: 0; }
+
+  .project-text {
+    font-size: 14px; color: var(--ink-mid); line-height: 1.75;
+  }
+
+  .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .mini-card {
+    background: var(--cream); border: 1px solid var(--sand-mid);
+    border-radius: 6px; padding: 16px;
+  }
+  .mini-card-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-light); margin-bottom: 6px;
+  }
+  .mini-card-value { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+
+  .insight-row {
+    display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start;
+  }
+  .insight-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--terracotta); margin-top: 8px; flex-shrink: 0;
+  }
+  .insight-text { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+  .outcome-bar {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+  }
+  .outcome-label { font-size: 13px; color: var(--ink-mid); width: 200px; flex-shrink: 0; }
+  .bar-track {
+    flex: 1; height: 6px; background: var(--sand);
+    border-radius: 3px; overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%; border-radius: 3px;
+    background: var(--terracotta);
+    animation: barGrow 1.2s ease forwards;
+    transform-origin: left;
+  }
+  @keyframes barGrow { from { width: 0 !important; } }
+  .outcome-value { font-size: 13px; font-weight: 500; color: var(--terracotta); width: 40px; }
+
+  .skills-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+  .skill-chip {
+    font-size: 12px; padding: 4px 12px; border-radius: 2px;
+    border: 1px solid var(--sand-mid); color: var(--ink-mid);
+    background: var(--cream);
+  }
+
+  .highlight-box {
+    background: var(--terracotta-light);
+    border-left: 3px solid var(--terracotta);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px; margin-top: 20px;
+  }
+  .highlight-box p { font-size: 13px; color: var(--terracotta-dark); line-height: 1.65; }
+  .highlight-box strong { font-weight: 500; }
+
+  .forest-box {
+    background: var(--forest-light);
+    border-left: 3px solid var(--forest-mid);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px; margin-top: 20px;
+  }
+  .forest-box p { font-size: 13px; color: var(--forest); line-height: 1.65; }
+
+  .divider-line { border: none; border-top: 1px solid var(--sand-mid); margin: 24px 0; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--warm-white); max-width: 100%; padding: 100px 0; border-top: 1px solid var(--sand-mid); }
+  .skills-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .skill-cat {
+    background: var(--cream); border: 1px solid var(--sand-mid);
+    border-radius: 8px; padding: 28px;
+  }
+  .skill-cat-icon { font-size: 22px; margin-bottom: 12px; }
+  .skill-cat-title {
+    font-family: 'Lora', serif;
+    font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 14px;
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 13px; color: var(--ink-mid);
+    padding: 6px 0; border-bottom: 1px solid var(--sand);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-level {
+    font-size: 11px; color: var(--ink-light);
+    background: var(--sand); padding: 2px 8px; border-radius: 100px;
+  }
+
+  /* ── CONTACT ── */
+  #contact { border-top: 1px solid var(--sand-mid); text-align: center; }
+  .contact-email {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 3.5vw, 38px);
+    color: var(--terracotta); font-weight: 600;
+    text-decoration: none;
+    display: block; margin: 20px 0 40px;
+    transition: color 0.2s;
+    letter-spacing: -0.01em;
+  }
+  .contact-email:hover { color: var(--terracotta-dark); }
+  .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+  .contact-link {
+    font-size: 13px; color: var(--ink-mid);
+    text-decoration: none; padding: 8px 20px;
+    border: 1px solid var(--sand-mid); border-radius: 3px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+  footer {
+    text-align: center; padding: 32px;
+    font-size: 12px; color: var(--ink-light);
+    border-top: 1px solid var(--sand-mid);
+    background: var(--cream);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 0.5; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    section { padding: 72px 24px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; padding: 0 24px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .two-col-grid { grid-template-columns: 1fr; }
+    .project-header { flex-direction: column; }
+    .project-body, .project-header { padding-left: 24px; padding-right: 24px; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; }
+    .outcome-label { width: 140px; font-size: 12px; }
+    .skills-inner { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Syeda Asra Anjum</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-decoration"></div>
+  <div class="hero-tag">Product Management · UX Research · B2B SaaS</div>
+  <h1 class="hero-name">Syeda<br>Asra <em>Anjum</em></h1>
+  <p class="hero-role">Aspiring Product Manager &amp; Usability Engineer</p>
+  <p class="hero-bio">
+    I bridge user insight and business outcomes — trained in Usability Engineering, grounded in Computer Science, and experienced in enterprise software environments. I turn research into decisions, and decisions into product.
+  </p>
+  <div class="hero-pills">
+    <span class="pill accent">Product Thinking</span>
+    <span class="pill">User Research</span>
+    <span class="pill">Agile / Scrum</span>
+    <span class="pill">B2B SaaS</span>
+    <span class="pill">Data Synthesis</span>
+    <span class="pill">Enterprise Software</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View My Work</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Product Case Studies</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Industry Internships</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Languages</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">MSc</div>
+      <div class="stat-label">Usability Engineering</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <div class="section-eyebrow">About Me</div>
+      <h2 class="section-title">Research-driven. Business-minded. Builder.</h2>
+      <p>I'm a Master's student in <strong>Usability Engineering</strong> with a Bachelor's in Computer Science Engineering — currently building toward a career in Product Management at a B2B SaaS company.</p>
+      <p>My edge: I can find the user insight that drives the product requirement — not just execute a brief. I've done it in enterprise environments at <strong>HCL Technologies</strong> and <strong>Bluestock Fintech</strong>, and across research-heavy academic projects with real users, real constraints, and real trade-offs.</p>
+      <p>I communicate in <strong>English, German, and Hindi</strong> — useful in international product teams.</p>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-card">
+        <div class="about-card-title">Education</div>
+        <div class="about-card-body">
+          <span>MSc Usability Engineering (ongoing)</span>
+          <span>BSc Computer Science Engineering</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Languages</div>
+        <div class="about-card-body">
+          <span>English (fluent)</span>
+          <span>German (professional)</span>
+          <span>Hindi (native)</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Currently seeking</div>
+        <div class="about-card-body">Working Student — Product Management at a B2B SaaS company. Up to 20h/week during semester.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Tools &amp; Methods</div>
+        <div class="about-card-body">
+          <span>Figma</span><span>Excel</span><span>PowerPoint</span>
+          <span>Jira</span><span>Notion</span><span>SharePoint</span>
+          <span>RICE</span><span>MoSCoW</span><span>SUS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-eyebrow reveal">Experience</div>
+  <h2 class="section-title reveal">Where I've worked</h2>
+  <p class="section-sub reveal">Two industry roles across enterprise and fintech — both sharpened my ability to operate in fast-moving, cross-functional environments.</p>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Aug 2024 – Feb 2025</div>
+      <div class="timeline-role">Graduate Intern</div>
+      <div class="timeline-company">HCL Technologies</div>
+      <p class="timeline-desc">
+        Contributed to enterprise software projects within a large-scale technology organisation. Gained exposure to agile delivery cycles, cross-functional stakeholder communication, and technical documentation practices in a global product environment.
+      </p>
+      <div class="timeline-tags">
+        <span class="tag">Enterprise Software</span>
+        <span class="tag">Agile Delivery</span>
+        <span class="tag">Documentation</span>
+        <span class="tag">Cross-functional Teams</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Aug 2024</div>
+      <div class="timeline-role">Web Development Intern</div>
+      <div class="timeline-company">Bluestock Fintech</div>
+      <p class="timeline-desc">
+        Built and iterated on web-based product features in a fintech startup context. Developed an understanding of product requirements, user-facing feature delivery, and the pace of a product-driven company.
+      </p>
+      <div class="timeline-tags">
+        <span class="tag">Fintech</span>
+        <span class="tag">Web Development</span>
+        <span class="tag">Product Features</span>
+        <span class="tag">Startup Environment</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot" style="background: var(--forest-mid);"></div>
+      <div class="timeline-date">Ongoing</div>
+      <div class="timeline-role">MSc Usability Engineering</div>
+      <div class="timeline-company">University — Germany</div>
+      <p class="timeline-desc">
+        Deep focus on research methods, user-centred design, interaction design, and evaluative testing. Applied to real products through a series of semester-long research and design projects.
+      </p>
+      <div class="timeline-tags">
+        <span class="tag">User Research</span>
+        <span class="tag">Interaction Design</span>
+        <span class="tag">Evaluative Testing</span>
+        <span class="tag">Agile Projects</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow reveal">Case Studies</div>
+  <h2 class="section-title reveal">Product Work</h2>
+  <p class="section-sub reveal">Each project is framed as a product case study — problem, research, decisions, outcomes. Not just design; product thinking with business context.</p>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1: PAWSFORWARD -->
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-number">01</div>
+        <div class="project-meta">
+          <div class="project-type">Product Discovery · UX Research · B2C Platform</div>
+          <h3 class="project-title">PawsForward — Animal Shelter Platform</h3>
+          <p class="project-tagline">Connecting hearts with shelter animals through transparent, emotionally-driven product design.</p>
+        </div>
+      </div>
+      <div class="project-body">
+
+        <div class="project-section-title">Problem Statement</div>
+        <p class="project-text">Animal shelters in Germany operate at 69% overcapacity (German Animal Welfare Federation), yet willing donors disengage due to a lack of transparency, trust, and meaningful ongoing connection. There was no platform solving both sides of this equation.</p>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">My Role &amp; Research Approach</div>
+        <div class="two-col-grid">
+          <div class="mini-card">
+            <div class="mini-card-label">Role</div>
+            <div class="mini-card-value">Documentation Lead · Research contributor · Presentation owner</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Duration</div>
+            <div class="mini-card-value">4 months · Team of 3</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Research Methods</div>
+            <div class="mini-card-value">Semi-structured interviews, 5-Whys root cause analysis, Five W's framework, competitor desk research</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Validation</div>
+            <div class="mini-card-value">10-participant usability test (remote + in-person), SUS scoring, time-on-task</div>
+          </div>
+        </div>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">Key Product Insights</div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>47% of non-adopters</strong> cited lack of time as the main barrier — the product needed to make support frictionless, not time-intensive.</div></div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>Trust, not empathy, was the real blocker.</strong> Users wanted to help but distrusted how money was used. Transparent donation tracking became a non-negotiable feature, not a nice-to-have.</div></div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>Engagement drops without feedback loops.</strong> Users needed to see the impact of their contribution — a virtual pet mechanic and monthly summaries were designed as retention tools, not cosmetic features.</div></div>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">Feature Prioritisation (PM View)</div>
+        <p class="project-text" style="margin-bottom:14px;">After user testing, I reframed the improvement backlog using impact vs. effort logic:</p>
+        <div class="two-col-grid">
+          <div class="mini-card" style="border-color: var(--terracotta); background: var(--terracotta-light);">
+            <div class="mini-card-label" style="color:var(--terracotta-dark);">High Impact · Low Effort — Build First</div>
+            <div class="mini-card-value">Guest checkout (no forced signup for one-time donation). Sorting/filtering by urgency and goal progress.</div>
+          </div>
+          <div class="mini-card" style="border-color: var(--forest-mid); background: var(--forest-light);">
+            <div class="mini-card-label" style="color:var(--forest);">High Impact · High Effort — Plan Next</div>
+            <div class="mini-card-value">Shelter backend dashboard. Subscription management (pause/cancel). Social sharing with impact data.</div>
+          </div>
+        </div>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">User Testing Outcomes</div>
+        <div class="outcome-bar"><div class="outcome-label">Emotional design resonance</div><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><div class="outcome-value">92%</div></div>
+        <div class="outcome-bar"><div class="outcome-label">Sponsorship model clarity</div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><div class="outcome-value">88%</div></div>
+        <div class="outcome-bar"><div class="outcome-label">Navigation intuitiveness</div><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div><div class="outcome-value">85%</div></div>
+        <div class="outcome-bar"><div class="outcome-label">Payment flow success rate</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="outcome-value">100%</div></div>
+
+        <div class="highlight-box">
+          <p><strong>PM Reflection:</strong> If I were a working PM on this product, the single highest-priority fix would be removing forced account creation for one-time donations. Every participant flagged it as a deal-breaker — it has direct revenue impact and a clear solution (guest checkout flow with optional account creation post-payment).</p>
+        </div>
+
+        <div class="skills-row" style="margin-top:20px;">
+          <span class="skill-chip">Product Discovery</span>
+          <span class="skill-chip">User Interviews</span>
+          <span class="skill-chip">Feature Prioritisation</span>
+          <span class="skill-chip">Usability Testing</span>
+          <span class="skill-chip">Revenue Model</span>
+          <span class="skill-chip">Figma Prototype</span>
+          <span class="skill-chip">Stakeholder Presentation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: SPRINT WEEK -->
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-number">02</div>
+        <div class="project-meta">
+          <div class="project-type">Agile Sprint · Rapid Product Delivery · Team Lead</div>
+          <h3 class="project-title">Sprint Week — Applied Research Project</h3>
+          <p class="project-tagline">A cross-functional product sprint: from problem definition to tested prototype in 5 business days.</p>
+        </div>
+      </div>
+      <div class="project-body">
+
+        <div class="project-section-title">Context</div>
+        <p class="project-text">A structured 5-day Agile sprint simulating a real product delivery cycle. The team operated full Scrum — daily stand-ups, sprint planning, a mid-week review, and a final retrospective. I took ownership of documentation, sprint coordination, and the final presentation deliverable.</p>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">How I Operated in Agile</div>
+        <div class="two-col-grid">
+          <div class="mini-card">
+            <div class="mini-card-label">Sprint Planning</div>
+            <div class="mini-card-value">Defined user stories with acceptance criteria. Scoped the sprint to what was achievable in 5 days — consciously cut 2 features to protect delivery.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Daily Stand-ups</div>
+            <div class="mini-card-value">Facilitated daily 15-min syncs: what's done, what's blocked, what's next. Tracked blockers and resolved two cross-team dependencies.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Documentation Lead</div>
+            <div class="mini-card-value">Owned sprint notes, decision log, and the final project report. Wrote the retrospective findings into a structured summary for the teaching team.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Retrospective</div>
+            <div class="mini-card-value">Facilitated a team retrospective. Key learnings: earlier user testing reduces late rework; clearer acceptance criteria shortens review cycles.</div>
+          </div>
+        </div>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">Ownership Moment</div>
+        <div class="forest-box">
+          <p>Midway through the sprint, the team's scope was at risk of overrunning. <strong>I proposed cutting one feature and documented the trade-off rationale</strong> — explaining to the team that delivering a tested core feature was more valuable than delivering two untested ones. The team agreed. The sprint completed on time. This is the kind of scoped, reasoned decision-making I bring to a product role.</p>
+        </div>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">Sprint Metrics</div>
+        <div class="outcome-bar"><div class="outcome-label">Features delivered on time</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="outcome-value">100%</div></div>
+        <div class="outcome-bar"><div class="outcome-label">User stories with acceptance criteria</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="outcome-value">100%</div></div>
+        <div class="outcome-bar"><div class="outcome-label">Prototype tested with real users</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="outcome-value">Yes</div></div>
+
+        <div class="skills-row" style="margin-top:20px;">
+          <span class="skill-chip">Scrum / Agile</span>
+          <span class="skill-chip">Sprint Planning</span>
+          <span class="skill-chip">Daily Stand-ups</span>
+          <span class="skill-chip">Scope Management</span>
+          <span class="skill-chip">Documentation</span>
+          <span class="skill-chip">Retrospective Facilitation</span>
+          <span class="skill-chip">Stakeholder Reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: AID HILFE -->
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-number">03</div>
+        <div class="project-meta">
+          <div class="project-type">Interaction Design · Accessibility · Requirements Definition</div>
+          <h3 class="project-title">AID Hilfe — Accessible Interaction Design</h3>
+          <p class="project-tagline">Identifying and solving an accessibility gap through structured research and validated design.</p>
+        </div>
+      </div>
+      <div class="project-body">
+
+        <div class="project-section-title">Problem</div>
+        <p class="project-text">Existing digital support tools failed to serve users with specific accessibility needs. The project aimed to identify the precise gap through research, define product requirements for an inclusive solution, and validate the design with the target user group.</p>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">PM-Style Problem Definition</div>
+        <div class="two-col-grid">
+          <div class="mini-card">
+            <div class="mini-card-label">Who is affected</div>
+            <div class="mini-card-value">Users requiring accessible digital interfaces — identified through contextual research and user interviews.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Business impact</div>
+            <div class="mini-card-value">Accessibility gaps exclude a significant user segment and create compliance risk for digital products in EU markets.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Solution constraint</div>
+            <div class="mini-card-value">Solution had to work without additional hardware. Software-only, retrofittable to existing products.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Success metric</div>
+            <div class="mini-card-value">Target users can complete core tasks independently, without support from another person.</div>
+          </div>
+        </div>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">Key Design Trade-offs Made</div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>Simplicity over features:</strong> Chose a focused single-function interaction over a multi-mode system. The more options, the more cognitive load for the target user.</div></div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>Validation over assumption:</strong> Iterated twice based on user feedback rather than shipping the first concept. The second iteration had significantly higher task success rates.</div></div>
+
+        <div class="highlight-box">
+          <p><strong>What this demonstrates for a PM role:</strong> I can translate a user research finding into a product requirement with clear acceptance criteria. I don't just note that something is hard to use — I define what "fixed" looks like, and how to measure it.</p>
+        </div>
+
+        <div class="skills-row" style="margin-top:20px;">
+          <span class="skill-chip">Requirements Definition</span>
+          <span class="skill-chip">Accessibility Research</span>
+          <span class="skill-chip">User Interviews</span>
+          <span class="skill-chip">Iterative Design</span>
+          <span class="skill-chip">Trade-off Documentation</span>
+          <span class="skill-chip">Validation Testing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4: SMART BIN -->
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-number">04</div>
+        <div class="project-meta">
+          <div class="project-type">Inclusive Design · Hardware Prototype · Product Spec</div>
+          <h3 class="project-title">Touchless Smart Bin — Inclusive Hardware Design</h3>
+          <p class="project-tagline">Defining product requirements for a sensor-based accessibility device for wheelchair users and the elderly.</p>
+        </div>
+      </div>
+      <div class="project-body">
+
+        <div class="project-section-title">Product Specification (PM Format)</div>
+        <div class="two-col-grid">
+          <div class="mini-card">
+            <div class="mini-card-label">Problem</div>
+            <div class="mini-card-value">Standard waste bins require physical contact or bending — both inaccessible for wheelchair users and elderly individuals.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Target users</div>
+            <div class="mini-card-value">Wheelchair users, elderly individuals with limited mobility. Secondary: any user in hygiene-critical environments.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Solution</div>
+            <div class="mini-card-value">Ultrasonic sensor detects motion at proximity. Lid opens within 0.1 seconds. Fully contactless and hands-free.</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-label">Success criteria</div>
+            <div class="mini-card-value">Wheelchair user can use bin independently. Response time under 0.2s. No physical contact required at any step.</div>
+          </div>
+        </div>
+
+        <hr class="divider-line">
+
+        <div class="project-section-title">What I Would Add as a PM</div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>Market sizing:</strong> 1.8M wheelchair users in Germany; accessible public infrastructure is a growing regulatory mandate under the EU Accessibility Act 2025.</div></div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>Competitive landscape:</strong> Existing automatic bins are primarily foot-pedal or sensor-on-top — both inaccessible for wheelchair height. This is an unaddressed gap.</div></div>
+        <div class="insight-row"><div class="insight-dot"></div><div class="insight-text"><strong>Next iteration priority:</strong> Battery life and maintenance cycle — the biggest operational concern for institutional buyers (hospitals, care homes).</div></div>
+
+        <div class="forest-box">
+          <p>This project taught me to think beyond the prototype — <strong>a product that works in a lab must also work in an institution</strong>. The real product questions are about deployment, maintenance, and procurement, not just the sensor response time.</p>
+        </div>
+
+        <div class="skills-row" style="margin-top:20px;">
+          <span class="skill-chip">Product Specification</span>
+          <span class="skill-chip">Inclusive Design</span>
+          <span class="skill-chip">User Needs Analysis</span>
+          <span class="skill-chip">Hardware Prototyping</span>
+          <span class="skill-chip">Market Context</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div id="skills">
+  <div class="skills-inner">
+    <div class="section-eyebrow reveal">Skills</div>
+    <h2 class="section-title reveal">What I bring to a product team</h2>
+    <p class="section-sub reveal">A combination of research rigour, technical foundation, and product operations capability — built across academic projects and industry internships.</p>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <div class="skill-cat-icon">◎</div>
+        <div class="skill-cat-title">Product Management</div>
+        <ul class="skill-list">
+          <li>Product discovery & framing <span class="skill-level">Practised</span></li>
+          <li>Feature prioritisation (RICE, MoSCoW) <span class="skill-level">Practised</span></li>
+          <li>PRD & requirements writing <span class="skill-level">Learning</span></li>
+          <li>Roadmap thinking <span class="skill-level">Learning</span></li>
+          <li>Stakeholder communication <span class="skill-level">Practised</span></li>
+        </ul>
+      </div>
+      <div class="skill-cat reveal">
+        <div class="skill-cat-icon">◈</div>
+        <div class="skill-cat-title">Research & Analysis</div>
+        <ul class="skill-list">
+          <li>User interviews (semi-structured) <span class="skill-level">Strong</span></li>
+          <li>Usability testing (SUS, ToT) <span class="skill-level">Strong</span></li>
+          <li>Competitive analysis <span class="skill-level">Practised</span></li>
+          <li>Desk research & synthesis <span class="skill-level">Strong</span></li>
+          <li>5-Whys, Five W's, SWOT <span class="skill-level">Practised</span></li>
+        </ul>
+      </div>
+      <div class="skill-cat reveal">
+        <div class="skill-cat-icon">◇</div>
+        <div class="skill-cat-title">Tools & Process</div>
+        <ul class="skill-list">
+          <li>Figma (prototyping & wireframes) <span class="skill-level">Strong</span></li>
+          <li>Microsoft PowerPoint <span class="skill-level">Strong</span></li>
+          <li>Microsoft Excel <span class="skill-level">Practised</span></li>
+          <li>Agile / Scrum ceremonies <span class="skill-level">Practised</span></li>
+          <li>Notion / SharePoint <span class="skill-level">Learning</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow reveal">Get in Touch</div>
+  <h2 class="section-title reveal">Let's talk product.</h2>
+  <p class="section-sub reveal" style="margin: 0 auto 12px; text-align:center;">Open to Working Student positions in Product Management — up to 20h/week during semester. Available to start soon.</p>
+  <a href="mailto:syeda.asra@email.com" class="contact-email reveal">syeda.asra@email.com</a>
+  <div class="contact-links reveal">
+    <a href="#" class="contact-link">LinkedIn</a>
+    <a href="#" class="contact-link">Figma Portfolio</a>
+    <a href="#" class="contact-link">Download CV</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Syeda Asra Anjum · Product Portfolio · Built for PM roles in B2B SaaS
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
